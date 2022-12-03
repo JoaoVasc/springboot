@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <script src="js/searchCEP.js" type='module' defer></script>
+  <script src="js/searchCEP.js"></script>
+  <script src="js/registration.js"></script>
+  <title>Reclame Aqui</title>
+</head>
+
+<body>
+  <header class="container-fluid fundo p-2">
+    <div class="container">
+      <div class="row">
+        <div class="cabecalho">
+          <div class="col-auto">
+            <a href="/">
+              <img src="./img/SES.png" alt="">
+            </a>
+          </div>
+          <div class="col-auto">
+            <img src="./img/brasao-gov-pe.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-start">
+        <div class="col-auto">
+          <a class="link border-start ps-4" href="/login">Entrar</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="row mt-5">
+      <div class="col-md-2 col-sm-12">
+        <form class="row g-3 border rounded p-2 mb-5">
+          <div class="form-check">
+            <input onclick="checkMark()" id="ouvidor" class="form-check-input" type="radio" name="flexRadioDefault"
+              id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Ouvidor
+            </label>
+          </div>
+          <div class="form-check">
+            <input onclick="checkMark()" id="cidadao" class="form-check-input" type="radio" name="flexRadioDefault"
+              id="flexRadioDefault2" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+              Cidadão
+            </label>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-12 col-10">
+        <form class="row g-3 border rounded " id="form">
+          <div class="col-md-3">
+            <label for="CPF" class="form-label">CPF</label>
+            <input type="cpf" class="form-control" id="cpf">
+          </div>
+          <div class="col-md-5">
+            <label for="Name" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome">
+          </div>
+          <div class="col-sm-4 col-3">
+            <label for="inputAddress" class="form-label">Nascimento</label>
+            <input type="date" class="form-control" id="date">
+          </div>
+          <div class="col-sm-6 col-3">
+            <label for="inputAddress2" class="form-label">Telefone</label>
+            <input type="text" class="form-control" id="telefone">
+          </div>
+          <div class="col-sm-4 col-md-3">
+            <label for="CEP" class="form-label">CEP</label>
+            <input type="text" class="form-control" id="CEP" maxlength="10" onkeypress="cepMask()">
+          </div>
+          <div class=" col-sm-2 col-1">
+            <label class="form-label" for="uf">UF</label>
+            <input class="form-control" type="text" id="estado">
+          </div>
+          <div class="col-sm-6 col-4">
+            <label for="" class="form-label">Endereço</label>
+            <input id="logradouro" type="text" class="form-control">
+          </div>
+          <div class="col-2">
+            <label for="" class="form-label">N°</label>
+            <input id="numero" type="text" class="form-control">
+          </div>
+          <div class="col-sm-4 col-md-2 col-lg-2">
+            <label for="" class="form-label">Complemento</label>
+            <input id="complemento" type="text" class="form-control">
+          </div>
+          <div class="col-sm-6 col-md-2 col-lg-2">
+            <label for="" class="form-label">Cidade</label>
+            <input id="cidade" type="text" class="form-control">
+          </div>
+          <div class="col-sm-12 col-2">
+            <label for="" class="form-label">Bairro</label>
+            <input id="bairro" type="text" class="form-control" readonly=“true”>
+          </div>
+          <div class="col-sm-6 col-4">
+            <label class="form-label">E-mail</label>
+            <input type="email" class="form-control">
+          </div>
+          <div class="col-sm-6 col-4">
+            <label class="form-label">Senha</label>
+            <input id="senha" type="password" class="form-control">
+          </div>
+          <div class="col-12 mb-4">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+          </div>
+        </form>
+        <form id="formOuvidor" class="d-none">
+          <form class="row g-3 border rounded" id="form">
+            <div class="col-md-3">
+              <label for="CPF" class="form-label">CPF</label>
+              <input type="cpf" class="form-control" id="cpf">
+            </div>
+            <div class="col-md-3">
+              <label for="Name" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="nome">
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-3">
+              <label for="inputAddress" class="form-label">Matricula</label>
+              <input type="text" class="form-control" id="matricula">
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-3">
+              <label for="inputAddress2" class="form-label">Tipo do Servidor</label>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Selecione</option>
+                <option value="1">Concursado</option>
+                <option value="2">Comissionado</option>
+                <option value="3">Terceirizado</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label for="CEP" class="form-label">Alocação</label>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Selecione</option>
+                <option value="1">SES-PE</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label for="inputAddress2" class="form-label">Telefone</label>
+              <input type="tel" class="form-control" id="telefone">
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <label class="form-label">E-mail</label>
+              <input type="email" class="form-control">
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <label class="form-label">Senha</label>
+              <input id="senha" type="password" class="form-control">
+            </div>
+            <div class="col-12 mb-4">
+              <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>
+          </form>
+      </div>
+    </div>
+  </main>
+  <script src="./js/script.js">
+
+  </script>
+
+
+</body>
+
+</html>
